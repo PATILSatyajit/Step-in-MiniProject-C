@@ -62,3 +62,7 @@ coverageCheck:
 	$(RM) *.c.gcov
 	$(RM) *.DAT
 	$(RM) test.c 
+
+valgrind:
+	gcc -I $(INC_HEADER) -I $(INC_TEST) $(TEST_SRC) -o $(call FixPath, ./$(TEST_OUTPUT))
+	valgrind ./$(TEST_OUTPUT)
