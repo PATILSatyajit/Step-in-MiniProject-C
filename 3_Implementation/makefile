@@ -1,5 +1,4 @@
 PROJECT_NAME = Stepin
-BUILD = build
 
 SRC = main.c\
 src\Delete_book.c\
@@ -15,9 +14,6 @@ src\Add_book.c\
 src\Update_book.c\
 src\Search_book.c\
 src\View_all_books.c
-
-INC_HEADER = inc
-INC_TEST = unity
 
 INC = -Iinc\
 -Iunity
@@ -38,7 +34,7 @@ else
    endif
 endif
 
-TEST_OUTPUT = Test_$(PROJECT_NAME).out
+TEST_OUTPUT = Test_$(PROJECT_NAME).$(EXEC)
 
 target : $(SRC) 
 	gcc $(SRC) $(INC) -o multifile.$(EXEC)
@@ -49,16 +45,10 @@ run : target
 test : target
 	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) 
 	./$(TEST_OUTPUT)
-	
-cppcheck:
-	cppcheck --enable=all -I $(INC_HEADER) $(SRC)
 
 clean:
-	gcc -fprofile-arcs -ftest-coverage -I $(INC_HEADER) -I $(INC_TEST) $(TEST_SRC) -o $(call FixPath, $(TEST_OUTPUT))
+	gcc -fprofile-arcs -ftest-coverage -I $(INC) $(TEST_SRC) -o $(call FixPath, $(TEST_OUTPUT))
 	$(RM) *.$(EXEC)
 	$(RM) *.gcda
 	$(RM) *.gcno
 	$(RM) *.gcov
-
-$(BUILD):
-	mkdir build
