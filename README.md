@@ -1,5 +1,6 @@
 # Library management system
-
+https://www.code-inspector.com/project/28125/score/svg
+https://www.code-inspector.com/project/28125/status/svg
 ## Folder Structure
 Folder             | Description
 -------------------| -----------------------------------------
