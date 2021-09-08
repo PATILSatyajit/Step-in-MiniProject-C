@@ -8,7 +8,7 @@ src\Update_book.c\
 src\Search_book.c\
 src\View_all_books.c
 
-TEST_SRC = test/test.c\
+TEST_SRC = test\test.c\
 unity\unity.c\
 src\Delete_book.c\
 src\Add_book.c\
