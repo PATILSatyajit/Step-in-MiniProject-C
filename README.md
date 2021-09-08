@@ -1,4 +1,8 @@
 # Library management system
+This library management system project is purely developed in c programming language on visual studio code. It enables librarian to use several utilities to track book record and reader's record as well.
+
+This library management system is only one side utility to control and keep track of issued books. It enables librarian to save reader's credentials while lending a book along with due dates and as soon as reader returns the book ,  librarian can update the book record. Librarian can also check for availabality of books by just typing book id.
+
 ![code_quality_score](https://www.code-inspector.com/project/28125/score/svg)
 | ![code_grade](https://www.code-inspector.com/project/28125/status/svg)
 
