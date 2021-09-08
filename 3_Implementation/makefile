@@ -39,14 +39,14 @@ endif
 
 # TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).$(EXEC)
 
-target : $(SRC) 
+all : $(SRC) 
 	gcc $(SRC) $(INC) -o multifile.$(EXEC)
 
-run : target
+run : all
 	./multifile.$(EXEC)
 
 # test : 
-test : target
+test : all
 	gcc $(TEST_SRC) $(INC) -o  test_output.$(EXEC) 
 	./test_output.$(EXEC)
 
