@@ -51,6 +51,9 @@ run : target
 #	gcc $(TEST_SRC) $(INC) -o  test_output.$(EXEC) 
 #	./test_output.$(EXEC)
 
+%.o:src/%.c
+	gcc $^ -I$(INC) -c
+	
 cppcheck:
 	cppcheck --enable=all -I $(INC_HEADER) $(SRC)
 
