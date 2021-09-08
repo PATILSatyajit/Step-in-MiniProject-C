@@ -11,7 +11,7 @@ This library management system is only one side utility to control and keep trac
 |[![Contribution Check - Git Inspector](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/gitinspector.yml/badge.svg)](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/gitinspector.yml)
 
 [![Code Quality - Static Code - Cppcheck](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/cppcheck.yml)
-| [![Unit Testing - Unity](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/unity.yml/badge.svg)](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/unity.yml)
+
 ## Folder Structure
 Folder             | Description
 -------------------| -----------------------------------------
