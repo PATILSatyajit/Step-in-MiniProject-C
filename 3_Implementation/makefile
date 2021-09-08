@@ -40,14 +40,14 @@ endif
 TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).$(EXEC)
 
 target : $(SRC) 
-	gcc $(SRC) $(INC) -o multifile.exe
+	gcc $(SRC) $(INC) -o multifile.$(EXEC)
 
 run : target
 	./multifile.exe
 
 test : $(TEST_SRC)
-	gcc $(TEST_SRC) $(INC) -o test_output.exe
-	./test_output.exe
+	gcc $(TEST_SRC) $(INC) -o  $(TEST_OUTPUT) -lm
+	./$(TEST_OUTPUT)
 
 
 cppcheck:
