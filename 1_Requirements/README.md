@@ -1,4 +1,3 @@
-# sp# Requirements
 
 ## Library management system
 
