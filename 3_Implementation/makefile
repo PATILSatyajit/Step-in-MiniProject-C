@@ -43,7 +43,7 @@ target : $(SRC)
 	gcc $(SRC) $(INC) -o multifile.$(EXEC)
 
 run : target
-	./multifile.exe
+	./multifile.$(EXEC)
 
 test : $(TEST_SRC)
 	gcc $(TEST_SRC) $(INC) -o  $(TEST_OUTPUT) -lm
