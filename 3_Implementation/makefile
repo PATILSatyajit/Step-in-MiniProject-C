@@ -21,7 +21,7 @@ INC_TEST = unity
 
 INC = -Iinc\
 -Iunity
-
+CFLAGS = -I$(INC)
 .PHONY: all test clean
 
 #To check if the OS is windows or linux and set the executable file extension and delete command accordingly
