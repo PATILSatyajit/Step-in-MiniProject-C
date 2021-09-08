@@ -1,4 +1,5 @@
 PROJECT_NAME = Stepin
+BUILD = build
 
 SRC = main.c\
 src\Delete_book.c\
@@ -52,16 +53,9 @@ test : $(TEST_SRC)
 cppcheck:
 	cppcheck --enable=all -I $(INC_HEADER) $(SRC)
 
-coverageCheck:
-	gcc -fprofile-arcs -ftest-coverage -I $(INC_HEADER) -I $(INC_TEST) $(TEST_SRC) -o $(call FixPath, $(TEST_OUTPUT))
-	$(call FixPath, ./$(TEST_OUTPUT))
-	gcov -a $(call FixPath, ./test_output.c)
-	$(RM) *.$(EXEC)
-	$(RM) *.gcda
-	$(RM) *.gcno
-	$(RM) *.c.gcov
-	$(RM) *.DAT
-	$(RM) test.c 
+coverageCheck:$(BUILD)
+	g++ -fprofile-arcs -ftest-coverage -fPIC -O0 $(TEST_SRC) $(INC) -o $(TEST_OUTPUT)
+	./$(TEST_OUTPUT)
 
 valgrind:
 	gcc -I $(INC_HEADER) -I $(INC_TEST) $(TEST_SRC) -o $(call FixPath, ./$(TEST_OUTPUT))
@@ -74,3 +68,6 @@ clean:
 	$(RM) *.gcda
 	$(RM) *.gcno
 	$(RM) *.gcov
+
+$(BUILD):
+	mkdir build
