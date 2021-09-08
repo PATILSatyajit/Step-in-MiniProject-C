@@ -40,3 +40,6 @@ run : target
 test : $(TEST_SRC)
 	gcc $(TEST_SRC) $(INC) -o test_output.exe
 	./test_output.exe
+	
+cppcheck:
+	cppcheck --enable=all -Iinc $(SRC)
