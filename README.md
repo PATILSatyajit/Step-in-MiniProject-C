@@ -4,6 +4,8 @@
 ![code_grade](https://www.code-inspector.com/project/28125/status/svg)
 
 [![CI](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/main.yml/badge.svg)](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/main.yml)
+
+[![C/C++ CI - Build Status](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/c-cpp.yml)
 ## Folder Structure
 Folder             | Description
 -------------------| -----------------------------------------
