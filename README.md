@@ -1,13 +1,10 @@
 # Library management system
 ![code_quality_score](https://www.code-inspector.com/project/28125/score/svg)
-
-![code_grade](https://www.code-inspector.com/project/28125/status/svg)
+| ![code_grade](https://www.code-inspector.com/project/28125/status/svg)
 
 [![CI](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/main.yml/badge.svg)](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/main.yml)
-
-[![C/C++ CI - Build Status](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/c-cpp.yml)
-
-[![Contribution Check - Git Inspector](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/gitinspector.yml/badge.svg)](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/gitinspector.yml)
+|[![C/C++ CI - Build Status](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/c-cpp.yml)
+|[![Contribution Check - Git Inspector](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/gitinspector.yml/badge.svg)](https://github.com/PATILSatyajit/Step-in-MiniProject-C/actions/workflows/gitinspector.yml)
 ## Folder Structure
 Folder             | Description
 -------------------| -----------------------------------------
