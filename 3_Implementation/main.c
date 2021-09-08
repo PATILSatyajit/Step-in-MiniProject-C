@@ -1,75 +1,117 @@
+/**
+ * @file main.c
+ * @author Satyajit Rajesh Patil 
+ * @brief main function of library management system
+ * @version 0.1
+ * @date 2021-09-07
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 
-#include"library_management.h"  
+#include"library.h"  
 
 
 int main()
 {
-    int ch, success, ID, new_member_id;
-    char new_status[10], new_date_of_issue[10], new_due_date[10], new_member_first_name[10],new_member_last_name[10], new_title[20];
-    printf("1. Add books\n2. View books\n3. Search books\n4. Update book records\n5. Delete books\n");
-    printf("Enter the choice\n");
-    scanf("%d",&ch);
-    if(ch == 1)
+    int A=1;
+    do{
+    int option, True, BOOK_ID, new_member_id;
+    char STS[10], new_issue_tarikh[10], new_due_tarikh[10], reader_first_naav[10],reader_last_naav[10], HEAding[20];
+    
+    printf("\t\t 1 - TO View all books \n\t\t 2 - TO Delete a book \n\t\t 3 - TO Add new book \n\t\t 4 - TO Search a book \n\t\t 5 - TO Update book record \n");
+    printf("CHOOSE CORRECT OPTION\n");
+    scanf("%d",&option);
+    
+    if(option == 1)
     {
-        printf("Enter the book id\n");
-        scanf("%d",&ID);
-        fflush(stdin);
-        printf("Enter name of the book\n");
-        gets(new_title);
-        success = enter_new_record(ID, new_title);
+        True = view_all_books();
+
+        if(True == pass){
+            printf("\t\t DONE \t\t\n");}
+        else{
+            printf("\t\t FAIL \t\t\n");
+            printf("press 1 to continue and 0 to exit\n");
+            scanf("%d", &A);}
     }
-    else if(ch == 2)
-    {
-        success = view_all_records();
-    }
-    else if(ch == 3)
-    {
-        printf("Enter the book id to search\n");
-        scanf("%d",&ID);
-        success = view_a_record(ID);
-    }
-    else if(ch == 4)
-    {
-        printf("Enter the book id to update\n");
-        scanf("%d",&ID);
-        success = view_a_record(ID);
-        if(success == 1){
-            printf("Enter new status\n");
-            scanf("%s", new_status);
-            printf("Enter new date of issue\n");
-            scanf("%s", new_date_of_issue);
-            printf("Enter new due date\n");
-            scanf("%s", new_due_date);
-            printf("Enter first name of member\n");
-            scanf("%s", new_member_first_name);
-            printf("Enter last name of member\n");
-            scanf("%s", new_member_last_name);
-            printf("Enter member ID\n");
-            scanf("%d", &new_member_id);
-            success=update_record(ID, new_status, new_date_of_issue, new_due_date, new_member_first_name,new_member_last_name, new_member_id);
-        }
-    }
-    else if (ch==5)
+    else if (option==2)
     {
         printf("Enter book id to delete\n");
-        scanf("%d",&ID);
-        success=delete_record(ID);
+        scanf("%d",&BOOK_ID);
+        True=delete_book(BOOK_ID);
+
+        if(True == pass){
+            printf("\t\t DONE \t\t\n");}
+        else{
+            printf("\t\t FAIL \t\t\n");
+            printf("press 1 to continue and 0 to exit\n");
+            scanf("%d", &A);}
+    }
+    else if(option == 3)
+    {
+        printf("Enter the book id\n");
+        scanf("%d",&BOOK_ID);
+        fflush(stdin);
+        printf("Enter book name\n");
+        gets(HEAding);
+        True = enter_new_book(BOOK_ID, HEAding);
+
+        if(True == pass){
+            printf("\t\t DONE \t\t\n");}
+        else{
+            printf("\t\t FAIL \t\t\n");
+            printf("press 1 to continue and 0 to exit\n");
+            scanf("%d", &A);}
+    
+    }
+    else if(option == 4)
+    {
+        printf("Enter the book id to search\n");
+        scanf("%d",&BOOK_ID);
+        True = view_a_book(BOOK_ID);
+
+        if(True == pass){
+                printf("\t\t DONE \t\t\n");}
+        else{
+            printf("\t\t FAIL \t\t\n");
+            printf("press 1 to continue and 0 to exit\n");
+            scanf("%d", &A);}
+    }
+    else if(option == 5)
+    {
+        printf("Enter the book id to update\n");
+        scanf("%d",&BOOK_ID);
+        True = view_a_book(BOOK_ID);
+        if(True == 1){
+            printf("Enter new status\n");
+            scanf("%s", STS);
+            printf("Enter new date of issue\n");
+            scanf("%s", new_issue_tarikh);
+            printf("Enter new due date\n");
+            scanf("%s", new_due_tarikh);
+            printf("Enter first name of member\n");
+            scanf("%s", reader_first_naav);
+            printf("Enter last name of member\n");
+            scanf("%s", reader_last_naav);
+            printf("Enter member ID\n");
+            scanf("%d", &new_member_id);
+            True=update_book(BOOK_ID, STS, new_issue_tarikh, new_due_tarikh, reader_first_naav,reader_last_naav, new_member_id);}
+        
+            
+            if(True == pass){
+                printf("\t\t DONE \t\t\n");}
+            else {
+                printf("\t\t FAIL \t\t\n");
+                printf("press 1 to continue and 0 to exit\n");
+                scanf("%d", &A);}
     }
     else
     {
-        printf("Wrong I/p\n");
+        printf("\t\t\t*******\n");
+        printf("please enter a right choice\n");
     }
-    if(success == pass)
-    {
-        printf("successful\n");
-    }
-    else if(success == fail)
-    {
-        printf("unseccessful\n");
-    }
-    else
-    {
-        printf("Error\n");
-    }
-    return 0;
+    
+}while (A);
+
+return 0;
 }

@@ -1,13 +1,23 @@
-#include "library_management.h"
+/**
+ * @file Add_book.c
+ * @author Satyajit Rajesh Patil 
+ * @brief function defination to add a new book
+ * @version 0.1
+ * @date 2021-09-07
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+#include "library.h"
 
-test_values enter_new_record(int id, char title[]){
+values enter_new_book(int id, char title[]){
     FILE *fptr;
-    fptr = fopen("library_data.txt","ab");
+    fptr = fopen("library_record.txt","ab");
     if(fptr==NULL){
         printf("Unable to open the file\n");
         return fail;
     }else{
-        book_data *new_book = (book_data*)malloc(sizeof(book_data));
+        book *new_book = (book*)malloc(sizeof(book));
         new_book->book_id = id;
         strcpy(new_book->book_title, title);
         strcpy(new_book->status, "Available");
@@ -16,7 +26,7 @@ test_values enter_new_record(int id, char title[]){
         new_book->member_id=0;
         strcpy(new_book->date_of_issue,"N/A");
         strcpy(new_book->due_date,"N/A");
-        fwrite(new_book, sizeof(book_data), 1, fptr);
+        fwrite(new_book, sizeof(book), 1, fptr);
         fclose(fptr);
         free(new_book);
         return pass;

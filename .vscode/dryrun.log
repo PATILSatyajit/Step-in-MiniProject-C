@@ -1,5 +1,0 @@
-make.exe --dry-run --keep-going --print-directory
-make.exe: Entering directory 'c:/Users/LENOVO/Step-in-MiniProject-C'
-gcc main.c functions\delete_record.c functions\new_record.c functions\update_record.c functions\view_a_record.c functions\view_all_records.c  -I-Iheader -Iunity -o all.exe
-make.exe: Leaving directory 'c:/Users/LENOVO/Step-in-MiniProject-C'
- 

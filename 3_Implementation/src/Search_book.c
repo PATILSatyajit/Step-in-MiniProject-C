@@ -1,15 +1,24 @@
-#include"library_management.h"  
+/**
+ * @file Search_book.c
+ * @author Satyajit Rajesh Patil
+ * @brief function defination to search a particular book by it's BOOK_ID
+ * @version 0.1
+ * @date 2021-09-07
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+#include"library.h"  
 
-
-test_values view_a_record(int id){
+values view_a_book(int id){
     FILE *fptr;
-    fptr = fopen("library_data.txt","rb");
+    fptr = fopen("library_record.txt","rb");
     if(fptr==NULL){
         printf("Unable to open the file\n");
         return fail;
     }else{
-        book_data *book_to_find=(book_data*)malloc(sizeof(book_data));
-        while(fread(book_to_find, sizeof(book_data), 1, fptr)!='\0'){
+        book *book_to_find=(book*)malloc(sizeof(book));
+        while(fread(book_to_find, sizeof(book), 1, fptr)!='\0'){
             if(id==book_to_find->book_id){
                 printf("Book ID: %d\n", book_to_find->book_id);
                 printf("Title: %s\n", book_to_find->book_title);

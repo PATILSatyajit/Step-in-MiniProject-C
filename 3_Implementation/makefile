@@ -1,32 +1,42 @@
-# build : main.c functions/delete_record.c functions/new_record.c functions/update_record.c functions/view_a_record.c functions/view_all_records.c functions/library_management.h
-# 	gcc main.c functions/delete_record.c functions/new_record.c functions/update_record.c functions/view_a_record.c functions/view_all_records.c -o output.exe
+SRC = main.c\
+src\Delete_book.c\
+src\Add_book.c\
+src\Update_book.c\
+src\Search_book.c\
+src\View_all_books.c
 
+TEST_SRC = test/test.c\
+unity\unity.c\
+src\Delete_book.c\
+src\Add_book.c\
+src\Update_book.c\
+src\Search_book.c\
+src\View_all_books.c
 
-SRC = main.c \
-src/delete_record.c \
-src/new_record.c \
-src/update_record.c \
-src/view_a_record.c \
-src/view_all_records.c
-
-TEST = test/test_management.c \
-unity\unity.c \
-src\delete_record.c \
-src\new_record.c \
-src\update_record.c \
-src\view_a_record.c \
-src\view_all_records.c
-
-INC = -Iinc \
+INC = -Iinc\
 -Iunity
+
+#To check if the OS is windows or linux and set the executable file extension and delete command accordingly
+ifdef OS
+   RM = del /q
+   FixPath = $(subst /,\,$1)
+   EXEC = exe
+else
+   ifeq ($(shell uname), Linux)
+      RM = rm -rf
+      FixPath = $1
+	  EXEC = out
+   endif
+endif
 
 .PHONY: all test clean
 
 target : $(SRC) 
-	gcc $(SRC) $(INC) -o all.exe
+	gcc $(SRC) $(INC) -o multifile.exe
 
 run : target
-	./all.exe
+	./multifile.exe
 
-test : $(TEST)
-	gcc $(TEST) $(INC) -o test.exe
+test : $(TEST_SRC)
+	gcc $(TEST_SRC) $(INC) -o test_output.exe
+	./test_output.exe
