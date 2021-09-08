@@ -1,10 +1,6 @@
-# Name of the project
 PROJECT_NAME = Stepin
-
-# Output directory
 BUILD = build
 
-# All source code files
 SRC = main.c\
 src\Delete_book.c\
 src\Add_book.c\
@@ -12,7 +8,6 @@ src\Update_book.c\
 src\Search_book.c\
 src\View_all_books.c
 
-# All test source files
 TEST_SRC = test/test.c\
 unity\unity.c\
 src\Delete_book.c\
@@ -21,53 +16,58 @@ src\Update_book.c\
 src\Search_book.c\
 src\View_all_books.c
 
-TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).out
+INC_HEADER = inc
+INC_TEST = unity
 
-# All include folders with header files
-INC	= -Iinc\
--Iunity\
+INC = -Iinc\
+-Iunity
 
-#Library Inlcudes
-#if working with CUnit 
-#INCLUDE_LIBS = -lcunit
-INCLUDE_LIBS =
+.PHONY: all test clean
 
-# Project Output name
-PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME).out
+#To check if the OS is windows or linux and set the executable file extension and delete command accordingly
+ifdef OS
+   RM = del /q
+   FixPath = $(subst /,\,$1)
+   EXEC = exe
+else
+   ifeq ($(shell uname), Linux)
+      RM = rm -rf
+      FixPath = $1
+	  EXEC = out
+   endif
+endif
 
-# Document files
-# DOCUMENTATION_OUTPUT = documentation/html
+TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).$(EXEC)
 
-# Default target built
-$(PROJECT_NAME):all
+target : $(SRC) 
+	gcc $(SRC) $(INC) -o multifile.$(EXEC)
 
-# Run the target even if the matching name exists
-.PHONY: run clean test doc all
+run : target
+	./multifile.exe
 
-all: $(SRC) $(BUILD)
-	gcc $(SRC) $(INC) -o $(PROJECT_OUTPUT).out -lm
-
-# Call `make run` to run the application
-run:$(PROJECT_NAME)
-	./$(PROJECT_OUTPUT).out
-
-# Document the code using Doxygen
-#doc:
-#	make -C ./documentation
-
-# Build and run the unit tests
-test:$(BUILD)
-	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) -lm
+test : $(TEST_SRC)
+	gcc $(TEST_SRC) $(INC) -o  $(TEST_OUTPUT) -lm
 	./$(TEST_OUTPUT)
-#Coverage
+
+
+cppcheck:
+	cppcheck --enable=all -I $(INC_HEADER) $(SRC)
+
 coverageCheck:$(BUILD)
 	g++ -fprofile-arcs -ftest-coverage -fPIC -O0 $(TEST_SRC) $(INC) -o $(TEST_OUTPUT)
 	./$(TEST_OUTPUT)
 
-# Remove all the built files, invoke by `make clean`
-clean:
-	rm -rf $(BUILD) $(DOCUMENTATION_OUTPUT)
+valgrind:
+	gcc -I $(INC_HEADER) -I $(INC_TEST) $(TEST_SRC) -o $(call FixPath, ./$(TEST_OUTPUT))
+	valgrind ./$(TEST_OUTPUT)
 
-# Create new build folder if not present
+
+clean:
+	gcc -fprofile-arcs -ftest-coverage -I $(INC_HEADER) -I $(INC_TEST) $(TEST_SRC) -o $(call FixPath, $(TEST_OUTPUT))
+	$(RM) *.$(EXEC)
+	$(RM) *.gcda
+	$(RM) *.gcno
+	$(RM) *.gcov
+
 $(BUILD):
 	mkdir build
