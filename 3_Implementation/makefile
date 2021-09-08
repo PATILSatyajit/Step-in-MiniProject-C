@@ -38,7 +38,7 @@ else
    endif
 endif
 
-# TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).$(EXEC)
+TEST_OUTPUT = Test_$(PROJECT_NAME).out
 
 target : $(SRC) 
 	gcc $(SRC) $(INC) -o multifile.$(EXEC)
@@ -46,13 +46,9 @@ target : $(SRC)
 run : target
 	./multifile.$(EXEC)
 
-# test : 
-#test : target
-#	gcc $(TEST_SRC) $(INC) -o  test_output.$(EXEC) 
-#	./test_output.$(EXEC)
-
-%.o:src/%.c
-	gcc $^ -I$(INC) -c
+test : target
+	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) 
+	./$(TEST_OUTPUT)
 	
 cppcheck:
 	cppcheck --enable=all -I $(INC_HEADER) $(SRC)
