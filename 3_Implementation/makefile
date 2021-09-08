@@ -21,6 +21,7 @@ INC_TEST = unity
 
 INC = -Iinc\
 -Iunity
+
 CFLAGS = -I$(INC)
 .PHONY: all test clean
 
@@ -46,26 +47,12 @@ run : target
 	./multifile.$(EXEC)
 
 # test : 
-test : target
-	gcc $(TEST_SRC) $(INC) -o  test_output.$(EXEC) 
-	./test_output.$(EXEC)
-
-# test : $(TEST_SRC)
-# 	gcc $(TEST_SRC) $(INC) -o test_output.exe
-# 	./test_output.exe
-
+#test : target
+#	gcc $(TEST_SRC) $(INC) -o  test_output.$(EXEC) 
+#	./test_output.$(EXEC)
 
 cppcheck:
 	cppcheck --enable=all -I $(INC_HEADER) $(SRC)
-
-# coverageCheck:$(BUILD)
-# 	g++ -fprofile-arcs -ftest-coverage -fPIC -O0 $(TEST_SRC) $(INC) -o $(TEST_OUTPUT)
-# 	./$(TEST_OUTPUT)
-
-# valgrind:
-# 	gcc -I $(INC_HEADER) -I $(INC_TEST) $(TEST_SRC) -o $(call FixPath, ./$(TEST_OUTPUT))
-# 	valgrind ./$(TEST_OUTPUT)
-
 
 clean:
 	gcc -fprofile-arcs -ftest-coverage -I $(INC_HEADER) -I $(INC_TEST) $(TEST_SRC) -o $(call FixPath, $(TEST_OUTPUT))
