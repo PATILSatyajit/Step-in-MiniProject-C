@@ -66,3 +66,11 @@ coverageCheck:
 valgrind:
 	gcc -I $(INC_HEADER) -I $(INC_TEST) $(TEST_SRC) -o $(call FixPath, ./$(TEST_OUTPUT))
 	valgrind ./$(TEST_OUTPUT)
+
+
+clean:
+	gcc -fprofile-arcs -ftest-coverage -I $(INC_HEADER) -I $(INC_TEST) $(TEST_SRC) -o $(call FixPath, $(TEST_OUTPUT))
+	$(RM) *.$(EXEC)
+	$(RM) *.gcda
+	$(RM) *.gcno
+	$(RM) *.gcov
