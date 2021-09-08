@@ -37,7 +37,7 @@ else
    endif
 endif
 
-TEST_OUTPUT = Test_$(PROJECT_NAME).$(EXEC)
+TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).$(EXEC)
 
 target : $(SRC) 
 	gcc $(SRC) $(INC) -o multifile.exe
