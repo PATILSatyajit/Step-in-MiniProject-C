@@ -1,7 +1,7 @@
 # Library management system
-![alfons-morales-YLSwjSy7stw-unsplash]https://www.code-inspector.com/project/28125/score/svg
+![code_quality_score](https://www.code-inspector.com/project/28125/score/svg)
 
-https://www.code-inspector.com/project/28125/status/svg
+![code_grade](https://www.code-inspector.com/project/28125/status/svg)
 ## Folder Structure
 Folder             | Description
 -------------------| -----------------------------------------
